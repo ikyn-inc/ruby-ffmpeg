@@ -214,8 +214,8 @@ module FFMPEG
       )
 
       begin
-        @metadata = MultiJson.load(stdout, symbolize_keys: true)
-      rescue MultiJson::ParseError => e
+        @metadata = MultiJSON.parse(stdout, symbolize_names: true)
+      rescue MultiJSON::ParseError => e
         raise LoadError.new(e.message.capitalize, stdout)
       end
 
